@@ -634,6 +634,10 @@ ul.nav li.active a:before {
     float: left;
     display: block;
     position: relative; /* Added */
+	@media only screen and (max-width: 768px) {
+	
+			float: none;
+		}
 }
 
 #portfolio .portfolio-filter > li a {
@@ -1654,14 +1658,16 @@ body.preview-on{
     left: 0;
     bottom: 0;
     right: 0;
+	overflow: hidden;
 
 	button{
 		width: fit-content;
 		height: fit-content;
 		background: transparent;
 		border: 0;
-		margin-top: 35px;
-		margin-left: 95%;
+		right: 0;
+		top: 15px;
+        position: absolute;
 
 		i{
 				font-size: 36px;
@@ -1677,9 +1683,20 @@ body.preview-on{
     margin-right: auto;
     width: 50%;
 	opacity: 0.2;
-	};
+	margin-top: 8vh;
+
+	@media only screen and (max-width: 768px) {
+
+		width: 40vh;
+	}
+	
+
+
+}
 
 	p{
+	
+
 	position: absolute;
     text-align: center;
     display: block;
@@ -1693,6 +1710,19 @@ body.preview-on{
 	line-height: 50px;
     color: white;
     opacity: 1;
+
+
+	@media only screen and (max-width: 1023px) {
+
+		width: 80%;
+        left: 10%;
+        font-size: 13px;
+        line-height: 33px;
+		right: 50px;
+        top: 60px;
+		position: absolute;
+
+		}
 	}
 }
 
@@ -1771,20 +1801,18 @@ body {
 	background-color: #e0d1bf;
 }
 
+@keyframes flip {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
+}
+.flip-icon {
+	animation: flip 2s linear infinite;
+}
 
-@keyframes bounce {
-	0%, 20%, 50%, 80%, 100% {
-	  transform: translateY(0);
-	}
-	40% {
-	  transform: translateY(-20px);
-	}
-	60% {
-	  transform: translateY(-10px);
-	}
-  }
-  
-  .animated-logo {
+.animated-logo {
 	animation: bounce 2s infinite;
   }
-  

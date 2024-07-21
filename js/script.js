@@ -305,7 +305,7 @@
       
     
     $("a.preview").on("click",e=>{
-      e.preventDefault();
+       e.preventDefault();
       let scrollPostion= window.scrollY;
     
       let div=document.createElement("div");
@@ -317,13 +317,15 @@
       let p=document.createElement("p");
       let text= $(e.currentTarget).next().text();
       p.innerHTML=text;
-      div.append(p);
     
       div.append(close);
+      div.append(p);
       div.append(img);
+      
     
       document.body.append(div);
       $("body").addClass("preview-on");
+      div.scrollIntoView()
     
     
       $(close).on("click",e=>{
@@ -335,4 +337,3 @@
     
     
     });
-    
