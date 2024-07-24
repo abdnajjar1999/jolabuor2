@@ -337,3 +337,39 @@
     
     
     });
+    document.getElementById("read-more-btn").addEventListener("click", function() {
+      var abdd = document.getElementById("more-text");
+      var btnTexttta = document.getElementById("read-more-btn");
+    
+      if (abdd.style.display === "none") {
+          abdd.style.display = "inline";
+          btnTexttta.style.display = "none";
+      }
+    });
+    document.getElementById("read1-more-btn").addEventListener("click", function() {
+      var abdd = document.getElementById("more-text1");
+      var btnTexttta = document.getElementById("read1-more-btn");
+    
+      if (abdd.style.display === "none") {
+          abdd.style.display = "inline";
+          btnTexttta.style.display = "none";
+      }
+    });
+    document.getElementById("read2-more-btn").addEventListener("click", function() {
+      var abdd = document.getElementById("more-text2");
+      var btnTexttta = document.getElementById("read2-more-btn");
+    
+      if (abdd.style.display === "none") {
+          abdd.style.display = "inline";
+          btnTexttta.style.display = "none";
+      }
+    });
+    document.getElementById("read3-more-btn").addEventListener("click", function() {
+      var abdd = document.getElementById("more-text3");
+      var btnTexttta = document.getElementById("read3-more-btn");
+    
+      if (abdd.style.display === "none") {
+          abdd.style.display = "inline";
+          btnTexttta.style.display = "none";
+      }
+    });

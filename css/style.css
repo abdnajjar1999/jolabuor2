@@ -189,7 +189,7 @@ a.btn-down {
 }
 a.btn-down:hover {
 	background:#fff;
-	color:#ec9108;
+	color:#f11149f9;
 	transition:all 0.5s;
 	-moz-transition: all 0.5s;
 	-o-transition: all 0.5s;
@@ -198,32 +198,57 @@ a.btn-down:hover {
 
 .btn-order {
     font-size: 30px; 
-    background-color: #ec9108; 
+    background: linear-gradient(45deg, #f11149f9); /* تدرج لوني جذاب */
     color: white;
     border: none; 
-    padding: 20px; 
+    padding: 20px 40px; /* زيادة المسافة الأفقية */
     text-align: center; 
     display: inline-block; 
     cursor: pointer;
-
+    border-radius: 10px; /* زوايا مدورة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تأثير ظل أساسي */
     font-weight: bold;
-	
-    animation: pulse 1.5s infinite;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* تأثير التحولات */
+    position: relative;
+    animation: glow 2s infinite, float 4s ease-in-out infinite; /* إضافة حركة خفيفة وتوهج */
 }
 
+.btn-order:hover {
+    transform: translateY(-5px); /* رفع الزر عند التمرير عليه */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.7); /* تعزيز تأثير الظل مع تأثير ضوء إضافي */
+}
 
-@keyframes pulse {
+.btn-order:active {
+    transform: translateY(0); /* إعادة الزر إلى موضعه عند الضغط */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إعادة تأثير الظل إلى حالته الأصلية */
+}
+
+@keyframes glow {
     0% {
-        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5); /* بداية التأثير */
+        background: linear-gradient(45deg, #f11149f9, #f11149f9); /* تدرج لوني بداية */
     }
     50% {
-        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8); /* زيادة الإضاءة */
+        background: linear-gradient(45deg, #f11149f9, #f11149f9); /* تدرج لوني متغير */
     }
     100% {
-        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5); /* عودة إلى التأثير الأولي */
+        background: linear-gradient(45deg, #f11149f9, #f11149f9); /* تدرج لوني نهاية */
     }
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0); /* الوضع الأصلي */
+    }
+    50% {
+        transform: translateY(-8px); /* حركة خفيفة لأعلى */
+    }
+    100% {
+        transform: translateY(0); /* العودة إلى الوضع الأصلي */
+    }
+}
 
 a.btn-order {
 	height: 50px;
@@ -901,9 +926,9 @@ p{
 	display: inline-block;
 	width: 116px;
 	height: 116px;
-	background-image: -moz-linear-gradient(90deg, #ec9108 0%, #ec9108 100%);
-	background-image: -webkit-linear-gradient(90deg, #ec9108 0%, #ec9108 100%);
-	background-image: -ms-linear-gradient(90deg, #ec9108 0%, #ec9108 100%);
+	background-image: -moz-linear-gradient(90deg, #f11149f9 0%, #f11149f9 100%);
+	background-image: -webkit-linear-gradient(90deg, #f11149f9 0%, #f11149f9 100%);
+	background-image: -ms-linear-gradient(90deg, #f11149f9 0%, #f11149f9 100%);
 	color: #fff;
 	border-radius: 100px;
 	border: 5px solid #f6f6f6;
@@ -1778,12 +1803,72 @@ body {
     text-align: justify
   }
 
-  #map .container .col-md-8.col-md-offset-2 .heading p {
-    /* أنماط CSS التي تريد تطبيقها هنا */
-    font-size: 16px; /* حجم الخط */
-    color: #333; /* لون النص */
-    line-height: 1.6; /* ارتفاع السطر */
-    text-align: justify; /* محاذاة النص */
+  #map {
+	background-color: #f9f9f9;
+	padding: 50px 0;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  #map .container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 0 15px;
+  }
+  
+  #map .content-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 30px;
+	width: 100%;
+	max-width: 900px;
+	margin: auto;
+	text-align: right;
+  }
+  
+  #map .content-item .text {
+	text-align: right;
+	width: 100%;
+	margin: 0 auto;
+  }
+  
+  #map .content-item .text h2,
+  #map .content-item .text h3 {
+	font-size: 2em;
+	color: #333;
+	margin-bottom: 20px;
+	font-weight: bold;
+  }
+  
+  #map .content-item .text p {
+	font-size: 1.1em;
+	color: #666;
+	line-height: 1.8;
+	text-align: right;
+  }
+  
+  #map .content-item .image {
+	text-align: center;
+	width: 100%;
+  }
+  
+  #map .content-item .image img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+  }
+    #map .content-item .image img {
+    width: 100%; /* اجعل الصورة تمتد على كامل عرض الحاوية */
+    max-width: 100%; /* تأكد من عدم تجاوز عرض الصورة عرض الحاوية */
+    height: auto; /* اجعل الارتفاع يتناسب مع العرض بشكل تلقائي */
+}
+
+@media (min-width: 768px) {
+    #map .content-item .image img {
+        width: 100%; /* عرض الصورة على 60% من عرض الحاوية عند الشاشات الكبيرة */
+        margin: 0 auto; /* مركز الصورة أفقياً */
+        display: block; /* تأكد من أن الصورة تتصرف ككتلة لتوسيع الهامش التلقائي */
+    }
 }
 
 .rtl-direction p {
@@ -1791,14 +1876,84 @@ body {
     font-size: 16px; /* حجم الخط */
     color: #333; /* لون النص */
     line-height: 1.6; /* ارتفاع السطر */
-    text-align: center; /* محاذاة النص */
+    text-align: right; /* محاذاة النص */
 }
-#roya{
-	background-color: #faebd7;
+#roya {
+	background-color: #f9f9f9;
+	padding: 50px 0;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  #roya .container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 0 15px;
+  }
+  
+  #roya .content-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 30px;
+	width: 100%;
+	max-width: 900px;
+	margin: auto;
+	text-align: right;
+  }
+  
+  #roya .content-item .text {
+	text-align: right;
+	width: 100%;
+	margin: 0 auto;
+  }
+  
+  #roya .content-item .text h2,
+  #roya .content-item .text h3 {
+	font-size: 2em;
+	color: #333;
+	margin-bottom: 20px;
+	font-weight: bold;
+  }
+  
+  #roya .content-item .text p {
+	font-size: 1.1em;
+	color: #666;
+	line-height: 1.8;
+	text-align: right;
+  }
+  
+  #roya .content-item .image {
+	text-align: center;
+	width: 100%;
+  }
+  
+  #roya .content-item .image img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+  }
+  
+  
+  #read3-more-btn:hover, #read2-more-btn:hover {
+	background-color: #0056b3;
+  }
+  
+  #more-text3, #more-text2 {
+	display: block;
+	margin-top: 10px;
+  }
+  #roya .content-item .image img {
+    width: 100%; /* اجعل الصورة تمتد على كامل عرض الحاوية */
+    max-width: 100%; /* تأكد من عدم تجاوز عرض الصورة عرض الحاوية */
+    height: auto; /* اجعل الارتفاع يتناسب مع العرض بشكل تلقائي */
 }
 
-#map{
-	background-color: #e0d1bf;
+@media (min-width: 768px) {
+    #roya .content-item .image img {
+        width: 100%; /* عرض الصورة على 60% من عرض الحاوية عند الشاشات الكبيرة */
+        margin: 0 auto; /* مركز الصورة أفقياً */
+        display: block; /* تأكد من أن الصورة تتصرف ككتلة لتوسيع الهامش التلقائي */
+    }
 }
 
 @keyframes flip {
@@ -1813,6 +1968,20 @@ body {
 	animation: flip 2s linear infinite;
 }
 
-.animated-logo {
-	animation: bounce 2s infinite;
-  }
+.logo {
+    width: 100px; /* تغيير العرض حسب الحاجة */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    display: block; /* التأكد من أن الصورة عبارة عن عنصر كتلة */
+    transform-style: preserve-3d; /* الحفاظ على تأثير 3D */
+    animation: flip 3s infinite linear; /* تطبيق تأثير الفليب بشكل مستمر */
+	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg); /* البداية من الوضع الأصلي */
+    }
+    100% {
+        transform: rotateY(360deg); /* الفليب الكامل */
+    }
+}
