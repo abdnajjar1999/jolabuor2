@@ -24,15 +24,15 @@ let transaction_details = [
 ];
 
 let customer_details = [
-    "ABD abd abd",
+    "",
 
 ];
 
 let shipping_address = customer_details;
 const url = {
 
-  callback: "https://rejected.us",
-  response: "https://www.success.com"
+  callback: "http://localhost:3000/sucsses",
+  response: "https://rejected.us"
 };
 let response_URLs = [
     url.response,
@@ -59,6 +59,9 @@ app.use(express.static(path.join(__dirname)));
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
+app.get('/sucsses', (req, res) => {
+  res.render('sucsses.ejs');
+});
 
 app.post("/", (req, res) => {
   console.log(req.body);
@@ -74,8 +77,8 @@ const cart = {
   description: "Dummy Order 35925502061445345",
   currency: "JOD",
   amount:amuont,
-  callback: "https://rejected.us",
-  return: "https://www.success.com"
+  callback: "http://localhost:3000/sucsses",
+  return: "https://rejected.us"
 };
 let cart_details = [
     cart.id,
@@ -116,6 +119,26 @@ let cart_details = [
   }
 });
 
+app.post('/sucsses', (req, res) =>{
+  const paymentData = req.body;
+
+  // Log the payment data received from PayTabs
+  console.log('Payment Callback Received:', paymentData);
+console.log("kdkdkdkrkgm");
+  // Handle the callback data (e.g., update order status, notify the user)
+  if (paymentData.response_code === '100') {
+      // Payment was successful
+      console.log('Payment Successful:', paymentData);
+      // Perform actions like updating the order status in the database
+  } else {
+      // Payment failed or was canceled
+      console.log('Payment Failed or Canceled:', paymentData);
+      // Handle failure (e.g., log the error, retry payment, notify the user)
+  }
+
+  // Respond to PayTabs to confirm receipt of the callback
+  res.sendStatus(200);
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
