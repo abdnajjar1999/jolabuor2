@@ -1,10 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 const request = require('request');
 const path = require('path');
 const paytabs = require('paytabs_pt2');
 const app = express();
 const port = 3000;
+const cors = require('cors');
+
+
+app.use(cors({
+    origin: 'https://jo-labour.web.app'  // Replace with your app's domain
+}));
+
 
 
 let profileID = "147514";
@@ -139,6 +147,76 @@ console.log("kdkdkdkrkgm");
   // Respond to PayTabs to confirm receipt of the callback
   res.sendStatus(200);
 });
+app.post('/initiate-payment', async (req, res) => {
+  const { customerName, customerEmail, customerPhone, amount, currency, orderId,nationalNumber } = req.body;
+
+  const url = 'https://secure-jordan.paytabs.com/payment/request';
+  const headers = {
+    'authorization': 'STJ9TLHGG9-JJRKDN9HRM-ZN2MRRTGTD',
+    'Content-Type': 'application/json',
+  };
+  const body = {
+    'profile_id': 150335,
+    'tran_type': 'sale',
+    'tran_class': 'ecom',
+    'cart_id': orderId,
+    'cart_description': nationalNumber,
+    'cart_currency': currency,
+    'cart_amount': amount,
+    'callback': `https://jo-labour.web.app/pay?status=failed&id=${orderId}`,
+    'return': `https://jo-labour.web.app/pay?status=success&id=${orderId}`,
+    'customer_details': {
+      'name': customerName,
+      'email': customerEmail,
+      'phone': customerPhone,
+      'street1': 'Address Line 1',
+      'city': 'City',
+      'state': 'State',
+      'country': 'Country',
+      'zip': '00000',
+    },
+    "hide_shipping": true,
+    //"hide_billing": true,
+  };
+
+  try {
+    const response = await axios.post(url, body, { headers });
+    if (response.status === 200) {
+      res.json({ success: true, redirect_url: response.data.redirect_url, tran_ref: response.data.tran_ref});
+      console.log(response.data);
+    } else {
+      res.status(response.status).json({ success: false, message: 'Failed to initiate payment' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error occurred', error: error.message });
+  }
+});
+app.post('/query', async (req, res) => {
+  const { tranRef } = req.body;
+
+  const url = 'https://secure-jordan.paytabs.com/payment/query';
+  const headers = {
+    'authorization': 'STJ9TLHGG9-JJRKDN9HRM-ZN2MRRTGTD',
+    'Content-Type': 'application/json',
+  };
+  const body = {
+    'profile_id':150335,
+    "cart_id": tranRef
+  };
+
+  try {
+    const response = await axios.post(url, body, { headers });
+    if (response.status === 200) {
+      res.json(response.data);
+      console.log(response.data);
+    } else {
+      res.status(response.status).json({ success: false, message: 'Failed to initiate payment' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error occurred', error: error.message });
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
