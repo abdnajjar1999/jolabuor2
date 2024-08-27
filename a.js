@@ -163,8 +163,8 @@ app.post('/initiate-payment', async (req, res) => {
     'cart_description': nationalNumber,
     'cart_currency': currency,
     'cart_amount': amount,
-    'callback': `https://jo-labour.web.app/pay?status=failed&id=${orderId}`,
-    'return': `https://jo-labour.web.app/pay?status=success&id=${orderId}`,
+    'callback': `https://jo-labour.web.app?status=failed&id=${orderId}`,
+    'return': `https://jo-labour.web.app?status=success&id=${orderId}`,
     'customer_details': {
       'name': customerName,
       'email': customerEmail,
