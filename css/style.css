@@ -317,6 +317,10 @@ a.navbar-brand img {
 	
 
 }
+.abd3{
+	font-weight: bold;
+	font-size: larger;
+}
 a.navbar-brand {
 	padding:0px;
 	margin-top:-3px;
@@ -1598,7 +1602,26 @@ color:#fff;
     color: #fff; /* Text color */
 }
 
+.donation {
+    position: fixed;
+    left: 10px; /* Adjust right position as needed */
+    top: 20%; /* Adjust top position as needed */
+    background-color: #f11149f9; /* Reducing opacity with RGBA */
+    padding: 6px;
+    border-radius: 3px;
+    z-index: 1000;
+    text-align: center;
+    width: 120px; /* Adjust width as needed */
+    font-size: 12px;
+	 /* Adjust font size as needed */
+    color: #fff; /* Text color */
+}
+
 .donation-banner >p{
+	color: white;
+	font-size: 19px;
+}
+.donation >p{
 	color: white;
 	font-size: 19px;
 }
@@ -1644,6 +1667,14 @@ color:#fff;
 
 
 .close-button {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #f1eaea;
+}
+.close{
     position: absolute;
     top: 3px;
     right: 5px;

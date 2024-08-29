@@ -1512,14 +1512,20 @@ if (typeof Object.create !== "function") {
 }(jQuery, window, document));
 
 document.addEventListener("DOMContentLoaded", function() {
-    var donationBanner = document.querySelector('.donation-banner');
-    var closeButton = document.querySelector('.close-button');
+    // Select all elements with the class 'close-button'
+    var closeButtons = document.querySelectorAll('.close-button');
 
-    // Close banner when close button is clicked
-    closeButton.addEventListener('click', function() {
-        donationBanner.style.display = "none";
-        setTimeout(function() {
-            donationBanner.style.display = "block";
-        }, 40000); // 60 seconds in milliseconds
+    // Loop through each button and add a click event listener
+    closeButtons.forEach(function(closeButton) {
+        closeButton.addEventListener('click', function() {
+            // Hide the parent element (e.g., the div containing the button)
+            var donationBanner = this.parentElement;
+            donationBanner.style.display = "none";
+            
+            // Re-display the banner after 40 seconds
+            setTimeout(function() {
+                donationBanner.style.display = "block";
+            }, 40000); // 40 seconds in milliseconds
+        });
     });
 });

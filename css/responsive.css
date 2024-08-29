@@ -145,6 +145,7 @@ ul.navbar-nav {
  position: relative;
  top:0;
 }
+
 .navbar-nav > li > a {
     line-height: 17px;
 	}
@@ -253,7 +254,7 @@ ul.navbar-nav {
  top:0;
 }
 .navbar-nav > li > a {
-    line-height: 17px;
+    line-height: 15px;
 	}
 .navbar-collapse.in{
 overflow:hidden;
